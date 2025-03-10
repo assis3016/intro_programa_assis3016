@@ -4,7 +4,7 @@
 #include <string>
 int main()
 {
-    int numero1 = 8;
+    int numero1 = 7;
     int numero2 = 5;
     if (numero1 > numero2)
     {
