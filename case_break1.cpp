@@ -37,8 +37,7 @@ int main () {
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
-{
+int main () {
     int dia = 3;
     switch (dia)
     {
