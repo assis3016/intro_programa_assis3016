@@ -5,7 +5,7 @@ int main () {
     int dia = 3;
     switch (dia) {
         case 1:
-            printf("domingo\n");
+            printf("domgingo\n");
             break;
         case 2:
             printf("segunda\n");
