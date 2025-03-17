@@ -39,8 +39,15 @@ int main() {
         break;
         printf("opcao de jogo invalida\n");
         break;
+    } 
+        printf("o numero do computador e: %d e o numero do jogador e %d\n", numeroComputador, numeroJogador);
+        
+        if (resultado == 1)
+        {
+        
+        printf("parabens, voce voce venceu!\n");
+    } else {
+        printf("infelizmente, voce perdeu!\n");
     }
-
-
-
 }
+    
