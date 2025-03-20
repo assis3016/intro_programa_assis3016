@@ -11,7 +11,8 @@ int main() {
     printf("bem vindo ao jogo maior, menor ou igual!\n");
     printf("voce deve escolher um numero e seu tipo de comparacao.\n");
     printf("M. maior\n");
-    printf("M. menor\n");
+    printf("N. menor\n");
+    printf("N. menor\n");
     printf("I. igual\n");
  
     printf("escolha a comparacao: ");
