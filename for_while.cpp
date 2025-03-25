@@ -34,22 +34,20 @@ int main () {
             return 0;
        }
    */
-#include <stdio.h>
-#include <stdlib.h>
-  int main () {
-	int fat = 1, n, temp;
-	printf("entre com o numero para calcular o fatorial:\n");
-	scanf("%d", &n);
-	if (n < 0) {
-	    printf("o fatorial nao e definidos por negativos.\n");
-	return 1; //encerra o progama com erro
-	}
-    temp = n; //armazena o valor original de n para exibicao correta
-	while(temp > 1) {
-	fat = fat * n;
-    n--; //corrige a ligica do loop
-	}
-	printf("o fatorial de %d e %d.\n", temp, fat);
-
-    return 0;
-}
+  #include<stdio.h>
+  int main(){
+  int fat = 1, n, temp;
+  printf("entre com um numero fatorial:\n");
+  scanf("%d", &n);
+  if(n < 0){
+  printf("numeros negativos são invalidodos para fatorial.\n");
+  return 1;
+  }
+  temp = n;
+  while(n > 1){
+  fat = fat * n;
+  n--;
+  }
+  printf("o fatorial de %d e %d.\n", temp, fat);
+  return 0;
+  }
