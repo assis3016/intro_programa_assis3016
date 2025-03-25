@@ -45,7 +45,7 @@ int main () {
 	return 1; //encerra o progama com erro
 	}
     temp = n; //armazena o valor original de n para exibicao correta
-	while(n > 1) {
+	while(temp > 1) {
 	fat = fat * n;
     n--; //corrige a ligica do loop
 	}
