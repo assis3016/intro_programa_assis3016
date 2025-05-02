@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Tech Conference 2023 - O maior evento de programação do ano.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Conference 2023</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .event-card {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .card-header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .card-header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .card-date {
+            background: #ff6b6b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .event-details {
+            margin-bottom: 25px;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .detail-icon {
+            width: 40px;
+            height: 40px;
+            background: #f0f4ff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            color: #4b6cb7;
+            font-size: 18px;
+        }
+        
+        .detail-text h3 {
+            font-size: 16px;
+            color: #4b6cb7;
+            margin-bottom: 3px;
+        }
+        
+        .detail-text p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .speakers {
+            margin-top: 20px;
+        }
+        
+        .speakers h2 {
+            font-size: 20px;
+            color: #182848;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f4ff;
+        }
+        
+        .speaker-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .speaker {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-size: 14px;
+        }
+        
+        .speaker img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        
+        .card-footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .register-btn {
+            background: linear-gradient(90deg, #ff6b6b 0%, #ff8e8e 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(255, 107, 107, 0.3);
+        }
+        
+        .register-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(255, 107, 107, 0.4);
+        }
+        
+        .qr-code {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .qr-code img {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            background: white;
+        }
+        
+        .qr-code p {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="event-card">
+        <div class="card-header">
+            <h1>Tech Conference 2023</h1>
+            <p>O maior evento de programação do ano</p>
+            <div class="card-date" id="event-date">Carregando data...</div>
+        </div>
+        
+        <div class="card-body">
+            <div class="event-details">
+                <div class="detail-item">
+                    <div class="detail-icon">🕒</div>
+                    <div class="detail-text">
+                        <h3>Horário</h3>
+                        <p>09:00 - 18:00</p>
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-icon">📍</div>
+                    <div class="detail-text">
+                        <h3>Local</h3>
+                        <p>Centro de Convenções - São Paulo/SP</p>
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-icon">💻</div>
+                    <div class="detail-text">
+                        <h3>Temas</h3>
+                        <p>IA, Front-end, Back-end, DevOps e Mobile</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="speakers">
+                <h2>Palestrantes Confirmados</h2>
+                <div class="speaker-list">
+                    <div class="speaker">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Palestrante">
+                        <span>Ana Silva</span>
+                    </div>
+                    <div class="speaker">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Palestrante">
+                        <span>Carlos Oliveira</span>
+                    </div>
+                    <div class="speaker">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Palestrante">
+                        <span>Mariana Costa</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card-footer">
+            <button class="register-btn" id="registerBtn">Inscreva-se Agora</button>
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://exemplo.com/evento" alt="QR Code">
+                <p>Escaneie para mais informações</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuração do evento
+        const eventData = {
+            title: "Tech Conference 2023",
+            date: new Date(), // Usa a data atual
+            location: "Centro de Convenções - São Paulo/SP",
+            time: "09:00 - 18:00",
+            themes: "IA, Front-end, Back-end, DevOps e Mobile",
+            speakers: [
+                { name: "Ana Silva", photo: "https://randomuser.me/api/portraits/women/44.jpg" },
+                { name: "Carlos Oliveira", photo: "https://randomuser.me/api/portraits/men/32.jpg" },
+                { name: "Mariana Costa", photo: "https://randomuser.me/api/portraits/women/68.jpg" }
+            ],
+            registerLink: "https://exemplo.com/inscricao"
+        };
+
+        // Formata a data no formato "Dia da semana, DD de Mês de AAAA"
+        function formatDate(date) {
+            const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+            return date.toLocaleDateString('pt-BR', options);
+        }
+
+        // Atualiza a data do evento
+        document.getElementById('event-date').textContent = formatDate(eventData.date);
+
+        // Adiciona interação ao botão de inscrição
+        document.getElementById('registerBtn').addEventListener('click', function() {
+            window.open(eventData.registerLink, '_blank');
+        });
+
+        // Efeito de confirmação ao clicar no botão
+        document.getElementById('registerBtn').addEventListener('mousedown', function() {
+            this.style.transform = 'translateY(1px)';
+            this.style.boxShadow = '0 2px 4px rgba(255, 107, 107, 0.4)';
+        });
+
+        document.getElementById('registerBtn').addEventListener('mouseup', function() {
+            this.style.transform = 'translateY(-3px)';
+            this.style.boxShadow = '0 6px 12px rgba(255, 107, 107, 0.4)';
+        });
+    </script>
+</body>
+</html>

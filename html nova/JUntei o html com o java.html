@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assis Soluções - Logo 3D Interativo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet"> 
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: red;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+        }
+        
+        #logoContainer {
+            text-align: center;
+        }
+        
+        #logoCanvas {
+            border-radius: 50%;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 300px;
+            height: 300px;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .company-name {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .phone-number {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="logoContainer">
+        <canvas id="logoCanvas"></canvas>
+        <h1 class="company-name">Assis Soluções</h1>
+        <p class="phone-number">Telefone: (11) 97274-4161</p>
+    </div>
+
+    <script>
+        class InteractiveLogo {
+            constructor(canvasId) {
+                this.canvas = document.getElementById(canvasId);
+                this.ctx = this.canvas.getContext('2d');
+                this.angleX = 0;
+                this.angleY = 0;
+                this.isAnimating = false;
+                this.setupCanvas();
+                this.drawLogo();
+                this.addEventListeners();
+            }
+
+            setupCanvas() {
+                const dpr = window.devicePixelRatio || 1;
+                this.canvas.width = 300 * dpr;
+                this.canvas.height = 300 * dpr;
+                this.ctx.scale(dpr, dpr);
+                this.canvas.style.width = "300px";
+                this.canvas.style.height = "300px";
+            }
+
+            drawLogo() {
+                const ctx = this.ctx;
+                const centerX = 150;
+                const centerY = 150;
+                const radius = 120;
+                
+                ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                ctx.save();
+                ctx.translate(centerX, centerY);
+                ctx.transform(1, Math.tan(this.angleX), Math.tan(this.angleY), 1, 0, 0);
+                
+                const gradient = ctx.createRadialGradient(0, 0, radius * 0.3, 0, 0, radius);
+                gradient.addColorStop(0, '#2c3e50');
+                gradient.addColorStop(1, '#1a252f');
+                
+                ctx.beginPath();
+                ctx.arc(0, 0, radius, 0, Math.PI * 2);
+                ctx.fillStyle = gradient;
+                ctx.fill();
+                
+                ctx.restore();
+            }
+
+            animate() {
+                this.angleX = Math.sin(Date.now() * 0.002) * 0.3;
+                this.angleY = Math.cos(Date.now() * 0.002) * 0.3;
+                this.drawLogo();
+                this.animationId = requestAnimationFrame(() => this.animate());
+            }
+
+            addEventListeners() {
+                this.canvas.addEventListener('click', () => {
+                    if (this.isAnimating) {
+                        cancelAnimationFrame(this.animationId);
+                        this.isAnimating = false;
+                    } else {
+                        this.animate();
+                        this.isAnimating = true;
+                    }
+                });
+            }
+        }
+
+        window.onload = () => new InteractiveLogo('logoCanvas');
+    </script>
+</body>
+</html>

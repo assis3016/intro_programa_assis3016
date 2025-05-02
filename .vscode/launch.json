@@ -1,6 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
+        
         {
             "name": "(gdb) Inicialização do Bash no Windows",
             "type": "cppdbg",
@@ -29,12 +30,13 @@
                     "ignoreFailures": true
                 }
             ]
-        }
+        },
         {
             "name": "(Windows) Anexar",
             "type": "cppvsdbg",
             "request": "attach",
-        }
+            "processId": "${command:pickProcess}"
+        },
         {
             "name": "(gdb) Inicialização do Pipe",
             "type": "cppdbg",
@@ -64,36 +66,7 @@
                     "ignoreFailures": true
                 }
             ]
-        }
-        {
-            "name": "(gdb) Inicialização do Bash no Windows",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "insira o nome do programa, por exemplo ${workspaceFolder}/a.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "externalConsole": false,
-            "pipeTransport": {
-                "debuggerPath": "/usr/bin/gdb",
-                "pipeProgram": "${env:windir}\\system32\\bash.exe",
-                "pipeArgs": ["-c"],
-                "pipeCwd": ""
-            },
-            "setupCommands": [
-                {
-                    "description": "Habilitar a reformatação automática para gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                },
-                {
-                    "description": "Definir Tipo de Desmontagem como Intel",
-                    "text": "-gdb-set disassembly-flavor intel",
-                    "ignoreFailures": true
-                }
-            ]
-        }
+        },
         {
             "name": "(gdb) Anexação de Pipe",
             "type": "cppdbg",
@@ -119,7 +92,7 @@
                     "ignoreFailures": true
                 }
             ]
-        }
+        },
         {
             "name": "Launch Chrome",
             "request": "launch",
@@ -146,31 +119,6 @@
             "name": "(gdb) Iniciar",
             "type": "cppdbg",
             "request": "launch",
-            "program": "insira o nome do programa, por exemplo ${workspaceFolder}/a.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "miDebuggerPath": "/path/to/gdb",
-            "setupCommands": [
-                {
-                    "description": "Habilitar a reformatação automática para gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                },
-                {
-                    "description": "Definir Tipo de Desmontagem como Intel",
-                    "text": "-gdb-set disassembly-flavor intel",
-                    "ignoreFailures": true
-                }
-            ]
-        }
-        {
-            "name": "(gdb) Iniciar",
-            "type": "cppdbg",
-            "request": "launch",
             "program": "${workspaceFolder}/a.exe",
             "args": [],
             "stopAtEntry": false,
@@ -191,7 +139,7 @@
                     "ignoreFailures": true
                 }
             ]
-        }
+        },
         {
             "name": "(gdb) Iniciar",
             "type": "cppdbg",

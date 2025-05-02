@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feira de Tecnologia 3D</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            perspective: 1000px;
+            overflow: hidden;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .tech-fair {
+            position: relative;
+            width: 800px;
+            height: 500px;
+            transform-style: preserve-3d;
+            animation: rotateScene 30s infinite linear;
+        }
+
+        @keyframes rotateScene {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        .floor {
+            position: absolute;
+            width: 1000px;
+            height: 1000px;
+            background: 
+                linear-gradient(45deg, #16213e 25%, transparent 25%) -50px -50px,
+                linear-gradient(-45deg, #16213e 25%, transparent 25%) -50px -50px,
+                linear-gradient(45deg, transparent 75%, #16213e 75%),
+                linear-gradient(-45deg, transparent 75%, #16213e 75%);
+            background-size: 100px 100px;
+            transform: rotateX(90deg) translateZ(-200px);
+            box-shadow: 0 0 50px rgba(0, 150, 255, 0.5);
+        }
+
+        .booth {
+            position: absolute;
+            width: 150px;
+            height: 200px;
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            transform-style: preserve-3d;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.6);
+        }
+
+        .booth::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .booth:nth-child(1) { transform: translateX(-200px) translateZ(100px); }
+        .booth:nth-child(2) { transform: translateX(0) translateZ(200px); }
+        .booth:nth-child(3) { transform: translateX(200px) translateZ(100px); }
+        .booth:nth-child(4) { transform: translateX(-100px) translateZ(-100px); }
+        .booth:nth-child(5) { transform: translateX(100px) translateZ(-100px); }
+
+        .person {
+            position: absolute;
+            width: 40px;
+            height: 80px;
+            background: #fff;
+            border-radius: 20px;
+            transform-style: preserve-3d;
+        }
+
+        .person::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            background: #ff6b6b;
+            border-radius: 50%;
+        }
+
+        .person:nth-child(6) { transform: translateX(-150px) translateZ(50px); }
+        .person:nth-child(7) { transform: translateX(-50px) translateZ(150px); }
+        .person:nth-child(8) { transform: translateX(50px) translateZ(200px); }
+        .person:nth-child(9) { transform: translateX(150px) translateZ(100px); }
+        .person:nth-child(10) { transform: translateX(-200px) translateZ(-50px); }
+        .person:nth-child(11) { transform: translateX(0) translateZ(-100px); }
+        .person:nth-child(12) { transform: translateX(200px) translateZ(-50px); }
+
+        .screen {
+            position: absolute;
+            width: 120px;
+            height: 80px;
+            background: #000;
+            border: 5px solid #333;
+            border-radius: 10px;
+            transform: translateY(-40px);
+            overflow: hidden;
+        }
+
+        .screen::before {
+            content: 'TECH EXPO 2023';
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #0ff;
+            font-weight: bold;
+            text-shadow: 0 0 10px #0ff;
+            animation: screenGlow 2s infinite alternate;
+        }
+
+        @keyframes screenGlow {
+            0% { opacity: 0.7; text-shadow: 0 0 5px #0ff; }
+            100% { opacity: 1; text-shadow: 0 0 20px #0ff; }
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: white;
+            display: flex;
+            gap: 15px;
+        }
+
+        button {
+            background: #3a7bd5;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #00d2ff;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="tech-fair">
+        <!-- Estandes -->
+        <div class="booth"></div>
+        <div class="booth"></div>
+        <div class="booth"></div>
+        <div class="booth"></div>
+        <div class="booth"></div>
+        
+        <!-- Pessoas -->
+        <div class="person"></div>
+        <div class="person"></div>
+        <div class="person"></div>
+        <div class="person"></div>
+        <div class="person"></div>
+        <div class="person"></div>
+        <div class="person"></div>
+        
+        <!-- Telas -->
+        <div class="screen" style="transform: translateX(-200px) translateZ(100px) translateY(-40px);"></div>
+        <div class="screen" style="transform: translateX(0) translateZ(200px) translateY(-40px);"></div>
+        <div class="screen" style="transform: translateX(200px) translateZ(100px) translateY(-40px);"></div>
+        
+        <!-- Chão -->
+        <div class="floor"></div>
+    </div>
+
+    <div class="controls">
+        <button id="rotateBtn">Girar Cena</button>
+        <button id="stopBtn">Parar</button>
+    </div>
+
+    <script>
+        const techFair = document.querySelector('.tech-fair');
+        const rotateBtn = document.getElementById('rotateBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        let rotateInterval;
+        let currentAngle = 0;
+
+        function rotateScene() {
+            currentAngle += 0.5;
+            techFair.style.transform = `rotateY(${currentAngle}deg)`;
+        }
+
+        rotateBtn.addEventListener('click', () => {
+            if (!rotateInterval) {
+                rotateInterval = setInterval(rotateScene, 30);
+            }
+        });
+
+        stopBtn.addEventListener('click', () => {
+            clearInterval(rotateInterval);
+            rotateInterval = null;
+        });
+
+        // Iniciar animação automaticamente
+        rotateInterval = setInterval(rotateScene, 30);
+
+        // Adicionar movimento aleatório às pessoas
+        const persons = document.querySelectorAll('.person');
+        persons.forEach(person => {
+            setInterval(() => {
+                const x = Math.random() * 100 - 50;
+                const z = Math.random() * 100 - 50;
+                person.style.transform += ` translateX(${x}px) translateZ(${z}px)`;
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

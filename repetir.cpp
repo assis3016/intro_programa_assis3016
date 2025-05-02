@@ -16,7 +16,7 @@ int main() {
     scanf("%c", &tipoComparacao);
     printf("digite seu numero ((entre 1 e100): ");
     scanf("%d", &numeroJogador);
-    print("o numero do computador  e: %d\n", numeroComputador);
+    printf("o numero do computador  e: %d\n", numeroComputador);
 
     switch (tipoComparacao)
     {
@@ -62,5 +62,5 @@ int main() {
     printf("Bem vindo ao jogo maior, menor ou igual!\n");
     printf("voco deve escolher um numero e seu tipo de comparacao.\n");
     printf("M. maior\n");
-    prinrf("N. menor\n");
+    printf("N. menor\n");
 }

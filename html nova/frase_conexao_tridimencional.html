@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Texto 3D Colorido</title>
+  <style>
+    body { margin: 0; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://threejs.org/examples/js/loaders/FontLoader.js"></script>
+<script src="https://threejs.org/examples/js/geometries/TextGeometry.js"></script>
+
+<script>
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  var renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  var loader = new THREE.FontLoader();
+
+  // Cores diferentes para cada letra
+  var colors = [0xff0000, 0xffa500, 0xffff00, 0x008000, 0x0000ff, 0x4b0082, 0xee82ee];
+
+  loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', function (font) {
+    var word = "Conexão";
+    var letters = [];
+
+    for (let i = 0; i < word.length; i++) {
+      let geometry = new THREE.TextGeometry(word[i], {
+        font: font,
+        size: 2,
+        height: 0.5,
+        bevelEnabled: true,
+        bevelThickness: 0.1,
+        bevelSize: 0.1,
+        bevelSegments: 5
+      });
+
+      let material = new THREE.MeshBasicMaterial({ color: colors[i % colors.length] });
+      let letterMesh = new THREE.Mesh(geometry, material);
+
+      letterMesh.position.set(i * 2 - 6, 0, 0);
+      scene.add(letterMesh);
+      letters.push(letterMesh);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      letters.forEach((letter, index) => {
+        letter.rotation.y += 0.01;
+      });
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  });
+
+  camera.position.z = 10;
+</script>
+
+</body>
+</html>
