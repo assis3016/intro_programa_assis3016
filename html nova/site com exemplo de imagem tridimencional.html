@@ -1,43 +1,108 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exemplo 3D com Three.js</title>
+  <title>Qualidade de Vida</title>
+  
+  <!-- Importar FontAwesome para os ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
   <style>
-    body { margin: 0; }
-    canvas { display: block; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #F0F9F0; /* verde muito claro */
+      color: #333;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      background-color: #fff;
+      padding: 1rem 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .navbar a {
+      color: #66BB6A;            /* verde claro */
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: transform 0.3s, color 0.3s;
+    }
+    .navbar a:hover {
+      color: #4CAF50;            /* verde mais escuro no hover */
+      transform: scale(1.2);
+    }
+
+    .content {
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+    .content h1 {
+      color: #4FC3F7;            /* azul claro para o título */
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .content p {
+      font-size: 1.1rem;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .learn-more {
+      background-color: #66BB6A; /* verde claro */
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      margin-top: 1rem;
+    }
+    .learn-more i {
+      margin-right: 8px;
+    }
+    .learn-more:hover {
+      background-color: #4CAF50; /* verde mais escuro no hover */
+      transform: translateY(-2px);
+    }
+
+    /* Responsivo */
+    @media (max-width: 600px) {
+      .navbar {
+        padding: 0.5rem 0;
+      }
+      .navbar a {
+        font-size: 1.2rem;
+      }
+      .content {
+        padding: 2rem 1rem;
+      }
+    }
   </style>
+
 </head>
+
 <body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script>
-  // Configuração da cena, câmera e renderizador
-  var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-  var renderer = new THREE.WebGLRenderer();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
+  <header>
+    <nav class="navbar">
+      <a href="#" title="Início"><i class="fa-solid fa-house"></i></a>
+      <a href="#" title="Sobre"><i class="fa-solid fa-user"></i></a>
+      <a href="#" title="Serviços"><i class="fa-solid fa-cog"></i></a>
+      <a href="#" title="Contato"><i class="fa-solid fa-phone"></i></a>
+    </nav>
+  </header>
 
-  // Criação de um cubo
-  var geometry = new THREE.BoxGeometry();
-  var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-  var cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
-
-  camera.position.z = 5;
-
-  // Função de animação
-  function animate() {
-    requestAnimationFrame(animate);
-
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-
-    renderer.render(scene, camera);
-  };
-
-  animate();
-</script>
+  <main class="content">
+    <h1>Qualidade de Vida</h1>
+    <p>Bem-vindo ao nosso site sobre qualidade de vida e bem-estar. Descubra dicas para uma vida mais saudável e feliz.</p>
+    <button class="learn-more">
+      <i class="fa-solid fa-arrow-right"></i> Saiba Mais
+    </button>
+  </main>
 </body>
+
 </html>

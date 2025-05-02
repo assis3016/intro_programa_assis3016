@@ -6,41 +6,77 @@
     <title>Pesquisa de Clima Organizacional – 2025</title>
     <style>
         body {
-            font-family: Arial;
-            max-width: 600px;
+            font-family: Arial, sans-serif;
+            max-width: 700px;
             margin: 2em auto;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+
+        h1 {
+            color: #2a7ae2;
+            text-align: center;
         }
 
         fieldset {
             margin-bottom: 1.5em;
-            padding: 1em;
-            border: 1px solid #ccc;
+            padding: 1.5em;
+            border: 3px solid #4a90e2;
+            border-radius: 8px;
+            background-color: #ffffff;
         }
 
         legend {
             font-weight: bold;
+            color: #4a90e2;
+            font-size: 1.2em;
         }
 
         label {
             display: block;
-            margin-top: 0.5em;
+            margin-top: 1em;
+            color: #333;
         }
 
         input[type="text"],
         textarea,
         select {
             width: 100%;
-            padding: 0.4em;
+            padding: 0.6em;
+            margin-top: 0.3em;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #4a90e2;
+            outline: none;
         }
 
         .inline-checkbox label {
             display: inline-block;
             margin-right: 1em;
+            color: #555;
         }
 
         button {
-            padding: 0.6em 1.2em;
-            font-size: 1em;
+            display: block;
+            margin: 2em auto 0;
+            padding: 0.8em 2em;
+            font-size: 1.1em;
+            color: white;
+            background-color: #4a90e2;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #357ab8;
         }
     </style>
 </head>
